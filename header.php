@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,6 +13,7 @@
     <body>
 
     <header>
+        <!-- basic navigation -->
         <nav>
             <a href="#">
                 <img src="#" alt="logo">
@@ -19,12 +24,24 @@
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
+        </nav>
+        <!-- Login/Logout form -->
             <div id="login-logout">
-                <form action="includes/login.inc.php" method="post">
+                <form id="login-form" action="includes/login.inc.php" method="post">
                     <input type="text" name="unm-input" placeholder="Username/E-mail">
                     <input type="password" name="upwd-input" placeholder="Password">
                     <button type="submit" name="login-submit">Login</button>
                 </form>
                 <a href="signup.php">Sign Up</a>
+                <form id="logout-form" action="includes/logout.inc.php" method="post">
+                    <button type="submit" id="logout-submit" name="logout-submit">Logout</button>
             </div>
+        <!-- php script to hide login form if already logged in -->
+        <?php
+            if(isset($_SESSION['userName'])){
+                echo '<script> document.getElementById("login-form").style.display = "none"</script>';
+            } else {
+                echo '<script> document.getElementById("logout-form").style.display = "none"</script>';
+            }
+        ?>
     </header>

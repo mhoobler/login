@@ -4,11 +4,12 @@ if(isset($_POST['signup-submit'])) {
 
     require 'dbh.inc.php';
 
-    $username = $_POST['unm'];
-    $email = $_POST['mail'];
-    $password = $_POST['pwd'];
+    $username = $_POST['unm-input'];
+    $email = $_POST['mail-input'];
+    $password = $_POST['pwd-input'];
     $pass_conf = $_POST['pwd-conf'];
 
+    //LOOOOOTS of error handling
     if(empty($username) || empty($email) || empty($password) || empty($pass_conf)) {
         header("Location: ../signup.php?error=emptyFields&uid=".$username."&mail=".$email);
         exit();
