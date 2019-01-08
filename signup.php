@@ -11,11 +11,11 @@
         <section class="section-default">
             <h1>Signup</h1>
             <form class="form-signup" action="includes/signup.inc.php" method="post" required>
-                <input type="text" name="unm-input" placeholder="Username" required>
-                <input type="text" name="mail-input" placeholder="E-mail" required>
-                <input type="password" name="pwd-input" placeholder="Password" required>
-                <input type="password" name="pwd-conf" placeholder="Confirm Password" required>
-                <button type="submit" name="signup-submit">Signup</button>
+                <input class="form-input" type="text" name="unm-input" placeholder="Username" required>
+                <input class="form-input" type="text" name="mail-input" placeholder="E-mail" required>
+                <input class="form-input" type="password" name="pwd-input" placeholder="Password" required>
+                <input class="form-input" type="password" name="pwd-conf" placeholder="Confirm Password" required>
+                <button class="form-input" type="submit" name="signup-submit">Signup</button>
             </form>
         </section>
     </div>

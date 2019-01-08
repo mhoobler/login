@@ -12,7 +12,7 @@ if(isset($_POST["login-submit"])){
         exit();
 
     } else {
-        $sql = "SELECT * FROM user_accounts WHERE unmUsers=? OR mailUsers=?";
+        $sql = "SELECT * FROM user_accounts WHERE unmUser=? OR mailUser=?";
         $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -25,14 +25,14 @@ if(isset($_POST["login-submit"])){
             $result = mysqli_stmt_get_result($stmt);
 
             if($row = mysqli_fetch_assoc($result)) {
-                $pwdCheck = password_verify($password, $row['pwd']);
+                $pwdCheck = password_verify($password, $row['pwdUser']);
                 if($pwdCheck == false){
                     header("Location: ../index.php?error=loginError");
                     exit();
                 } else if($pwdCheck == true){
                     session_start();
-                    $_SESSION['userId'] = $row['idUsers'];
-                    $_SESSION['userName'] = $row['unmUsers'];
+                    $_SESSION['userId'] = $row['idUser'];
+                    $_SESSION['userName'] = $row['unmUser'];
                     
                     header("Location: ../index.php?login=success");
                     exit();

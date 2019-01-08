@@ -28,13 +28,13 @@
         <!-- Login/Logout form -->
             <div id="login-logout">
                 <form id="login-form" action="includes/login.inc.php" method="post">
-                    <input type="text" name="unm-input" placeholder="Username/E-mail">
-                    <input type="password" name="upwd-input" placeholder="Password">
-                    <button type="submit" name="login-submit">Login</button>
+                    <input class="form-input" type="text" name="unm-input" placeholder="Username/E-mail">
+                    <input class="form-input" type="password" name="upwd-input" placeholder="Password">
+                    <button class="form-input" type="submit" name="login-submit">Login</button>
+                    <a href="signup.php">Sign Up</a>
                 </form>
-                <a href="signup.php">Sign Up</a>
                 <form id="logout-form" action="includes/logout.inc.php" method="post">
-                    <button type="submit" id="logout-submit" name="logout-submit">Logout</button>
+                    <button class="form-input" type="submit" id="logout-submit" name="logout-submit">Logout</button>
             </div>
         <!-- php script to hide login form if already logged in -->
         <?php

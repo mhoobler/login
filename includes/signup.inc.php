@@ -23,7 +23,7 @@ if(isset($_POST['signup-submit'])) {
         header("Location: ../signup.php?error=passwordConfirmation&uid=".$username."&mail=".$email);
         exit();
     } else {
-        $sql = "SELECT unmUsers FROM user_accounts WHERE unmUsers=?"; //add email checl
+        $sql = "SELECT unmUser FROM user_accounts WHERE unmUser=?"; //add email checl
         $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -39,7 +39,7 @@ if(isset($_POST['signup-submit'])) {
                 header("Location: ../signup.php?error=duplicateUsername&mail=".$email);
                 exit();
             } else {
-                $sql = "INSERT INTO user_accounts (unmUsers, mailUsers, pwd) VALUES (?, ?, ?)";
+                $sql = "INSERT INTO user_accounts (unmUser, mailUser, pwdUser, dateUser) VALUES (?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
 
                 if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -48,7 +48,7 @@ if(isset($_POST['signup-submit'])) {
                 } else {
                     $hashed = password_hash($password, PASSWORD_DEFAULT);
 
-                    mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashed);
+                    mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $hashed, date("Y-m-d"));
                     mysqli_stmt_execute($stmt);
                     header("Location: ../signup.php?signup=success");
                     exit();
